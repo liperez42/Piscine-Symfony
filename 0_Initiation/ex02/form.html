@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <style>
     body {
@@ -18,36 +17,34 @@
         <h1>Contact</h1>
 
         <form>
-            <label for="Firstname">Firstname</label><br>
-            <input id="Firstname"; type="text"; name="Firstname";><br><br>
+            <label for="firstname">Firstname:</label><br>
+            <input id="firstname"; type="text"; name="Firstname";><br><br>
 
-            <label for="Name">Name</label><br>
-            <input id="Name"; type="text"; name="Name";><br><br>
+            <label for="name">Name:</label><br>
+            <input id="name"; type="text"; name="Name";><br><br>
 
-            <label for="Age">Age</label><br>
-            <input id="Age"; type="number"; name="Age";><br><br>
+            <label for="age">Age:</label><br>
+            <input id="age"; type="number"; name="Age";><br><br>
 
-            <label for="Phone">Phone</label><br>
-            <input id="Phone"; type="tel"; name="Phone";><br><br>
+            <label for="phone">Phone:</label><br>
+            <input id="phone"; type="tel"; name="Phone";><br><br>
 
-            <label for="Email">Email</label><br>
-            <input id="Email"; type="email"; name="Email";><br>
+            <label for="email">Email:</label><br>
+            <input id="email"; type="email"; name="Email";><br>
             
             <p>Student at 42 ?</p>
-            <input type="checkbox"; id="Student";>
-            <label for="Student"> Yes </label>
-            <input type="checkbox"; id="Student";>
-            <label for="Student"> No </label> <br>
+            <input type="checkbox"; id="student";>
+            <label for="student"> Yes </label>
 
             <p>Please select your gender</p>
-            <input type="radio"; id="Gender">
+            <input type="radio" name="Gender" id="gender_female">
             <label for="gender"> Female </label>
-            <input type="radio"; id="Gender">
+            <input type="radio" name="Gender" id="gender_male">
             <label for="gender"> Male </label>
-            <input type="radio"; id="Gender">
+            <input type="radio" name="Gender" id="gender_other">
             <label for="gender"> Other </label><br><br>
 
-            <input type="submit" value="Submit">
+            <button type="submit" onclick="displayFormContents();">Submit</button>
         </form>
 </body>
 
