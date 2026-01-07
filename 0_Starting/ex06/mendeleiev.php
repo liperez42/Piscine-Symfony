@@ -2,12 +2,18 @@
 
 $file = fopen("ex06.txt");
 
-// $atom;
-// $number;
-// $symbol;
-// $molar;
 
-    
+
+$elements;
+
+$grid = [];
+
+foreach($elements as $el)
+{
+    $grid[$el['period']][$el['group']] = $el;
+}
+
+
 $html = '<!DOCTYPE html>
 <html lang="en">
 <head>
