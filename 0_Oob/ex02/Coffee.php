@@ -7,19 +7,17 @@ class Coffee extends HotBeverage {
 
     function __construct()
     {
-        $this->name = "Coffee";
-        $this->_price = "";
-        $this->_resistence = "";
-        $this->description = "";
-        $this->comment = "";
+        parent::__construct("Coffee", 6.5, 5);
+        $this->description = "Black coffee, latte, cappuccino, anything you want for you daily dose of caffeine !";
+        $this->comment = "Exactly what we need to stay up for the day !";
     }
 
-    function get_description()
+    function getDescription()
     {
         return $this->description;
     }
 
-    function get_comment()
+    function getComment()
     {
         return $this->comment;
     }

@@ -2,7 +2,6 @@
 
 $lines = file("ex06.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 $elements = [];
-// $period = 2;
 $col = 0;
 
 function getPeriod($number)

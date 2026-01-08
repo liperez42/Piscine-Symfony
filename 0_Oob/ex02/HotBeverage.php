@@ -2,28 +2,22 @@
 
 class HotBeverage {
 
-    protected $name;
-    protected $price;
-    protected $resistence;
+    public function __construct(protected $name, protected $price, protected $resistance) {}
 
-    function get_name()
+    function getName()
     {
         return $this->name;
     }
 
-    function get_price()
+    function getPrice()
     {
         return $this->price;
     }
 
-    function get_resistence()
+    function getResistance()
     {
-        return $this->resistence;
+        return $this->resistance;
     }
-
-
-
 }
 
 ?>
-

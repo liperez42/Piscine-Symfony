@@ -7,19 +7,17 @@ class Tea extends HotBeverage {
 
     function __construct()
     {
-        $this->name = "Tea";
-        $this->_price = "";
-        $this->_resistence = "";
-        $this->description = "";
-        $this->comment = "";
+        parent::__construct("Tea", 2.5, 2);
+        $this->description = "Tea scented with the aroma of jasmine blossoms.";
+        $this->comment = "Excellent tea for a nice break !";
     }
 
-    function get_description()
+    function getDescription()
     {
         return $this->description;
     }
 
-    function get_comment()
+    function getComment()
     {
         return $this->comment;
     }

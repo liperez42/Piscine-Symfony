@@ -1,28 +1,30 @@
 <?php
 
-class TemplateEngine { 
+class TemplateEngine {
 
-    function createFile(HotBeverage $text)
+    public function createFile(HotBeverage $drink)
     {
-        $content = "<!DOCTYPE html>
-<html>
+        $content = file_get_contents("template.html");
 
-<head>
-    <title> Animal Crossing </title>
-    <style> 
-        body {
-            background-color: #7db592;
+        $reflection = new ReflectionClass($drink);
+        $methods = $reflection->getMethods(ReflectionMethod::IS_PUBLIC);
+
+        foreach ($methods as $method) 
+        {
+            if (str_starts_with($method->getName(), 'get')) 
+            {
+                $key = substr($method->getName(), 3);
+                if (strtolower($key) === 'name') 
+                    $key = 'nom';
+                else
+                    $key = strtolower($key);
+
+                $value = $method->invoke($drink);
+                $content = str_replace('{' . $key . '}', $value, $content);
+            }
         }
-    </style>
-</head>
-
-<body>
-    " . $text->readData() . "
-</body>
-
-</html>";
-        
-        file_put_contents($fileName, $content);
+        file_put_contents($reflection->getShortName() . ".html", $content);
     }
 }
+
 ?>
