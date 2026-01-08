@@ -2,7 +2,7 @@
 
 class TemplateEngine { 
 
-    function createFile($fileName, $text)
+    function createFile(HotBeverage $text)
     {
         $content = "<!DOCTYPE html>
 <html>

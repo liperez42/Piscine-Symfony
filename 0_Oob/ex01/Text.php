@@ -14,9 +14,9 @@ class Text {
         $this->content .= $str;
     }
 
-    function    readData($str)
+    function    readData()
     {
-        
+        return "<p>" . htmlspecialchars($this->content) . "</p>";
     }
 }
 
