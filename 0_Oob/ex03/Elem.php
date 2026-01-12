@@ -32,23 +32,39 @@ class Elem {
         $this->content[] = $str;
     }
 
-    function getHTML()
+    private function isTextOnly(): bool
+    {
+        foreach ($this->content as $item) {
+            if ($item instanceof Elem) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function getHTML(int $level = 0)
     {
 
-        if (in_array($this->element, self::TAG_SELF_CLOSING))
-            return "<{$this->element}>\n";
+        $indent = str_repeat("  ", $level);
 
-        $html = "\n<{$this->element}>";
+        if (in_array($this->element, self::TAG_SELF_CLOSING))
+            return $indent . "<{$this->element}>\n";
+
+        if ($this->isTextOnly()) 
+        {
+            $content = implode('', $this->content);
+            return $indent . "<{$this->element}>{$content}</{$this->element}>\n";
+        }
+
+        $html = $indent . "<{$this->element}>\n";
 
         foreach ($this->content as $item)
         {
             if ($item instanceof Elem)
-                $html .= $item->getHTML();
-            else
-                $html .= $item;
+                $html .= $item->getHTML($level + 1);
         }
 
-        $html .= "</{$this->element}>\n";
+        $html .= $indent . "</{$this->element}>\n";
 
         return $html;
     }

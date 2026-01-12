@@ -1,12 +1,10 @@
 <?php
 
-class MyException extends Exception {
-
-    function message()
+class MyException extends Exception 
+{
+    function __construct($element)
     {
-        $errorMsg = "Error:" . "the tag <" . $this->element . "> is invalid.";
-
-        return $errorMsg;
+        parent::__construct("Error: the tag <$element> is invalid.");
     }
 }
 

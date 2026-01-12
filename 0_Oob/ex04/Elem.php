@@ -1,5 +1,7 @@
 <?php
 
+require_once 'MyException.php';
+
 class Elem {
 
     private $element;
@@ -27,6 +29,10 @@ class Elem {
         {
             $this->content[] = $content;
         }
+        if ($attributes !== null)
+        {
+            $this->attributes = $attributes;
+        }
     }
     
     function pushElement($str) 
@@ -34,23 +40,49 @@ class Elem {
         $this->content[] = $str;
     }
 
-    function getHTML()
+    function renderAttributes()
     {
+        $html = '';
+        foreach ($this->attributes as $key => $value)
+        {
+            $html .= ' ' . htmlspecialchars($key) . '="' . htmlspecialchars($value) . '"';
+        }
+        return $html;
+    }
+
+    private function isTextOnly(): bool
+    {
+        foreach ($this->content as $item) {
+            if ($item instanceof Elem) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    function getHTML(int $level = 0)
+    {
+        $indent = str_repeat("  ", $level);
 
         if (in_array($this->element, self::TAG_SELF_CLOSING))
-            return "<{$this->element}>\n";
+            return $indent . "<{$this->element}>\n";
 
-        $html = "\n<{$this->element}>";
+        if ($this->isTextOnly()) 
+        {
+            $content = implode('', $this->content);
+            return $indent . "<{$this->element}{$this->renderAttributes()}>{$content}</{$this->element}>\n";
+        }
+
+        $html = $indent . "<{$this->element}" . $this->renderAttributes() . ">\n";
 
         foreach ($this->content as $item)
         {
             if ($item instanceof Elem)
-                $html .= $item->getHTML();
-            else
-                $html .= $item;
+                $html .= $item->getHTML($level + 1);
         }
 
-        $html .= "</{$this->element}>\n";
+        $html .= $indent . "</{$this->element}>\n";
 
         return $html;
     }
