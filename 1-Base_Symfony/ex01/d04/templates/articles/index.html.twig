@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>Bienvenue sur notre site d'articles</h1>
+    </header>
+    <main>
+        <h2>Choisissez un article :</h2>
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="{{ path('app_articles', {'article': category}) }}">
+                        {{ category }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>© 2026 Mon Application Symfony</p>
+    </footer>
+{% endblock %}
+
+
