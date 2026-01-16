@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block header %}
+
+<h1>Welcome on our articles website</h1>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <h2>Select an article :</h2>
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="{{ path('app_articles', {'article': category}) }}">
+                        {{ category }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+{% endblock %}
+
+
