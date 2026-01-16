@@ -23,18 +23,15 @@ final class ArticlesController extends AbstractController
     {
         $categories = $this->getParameter('app.categories');
 
-        if (!in_array($article, $categories, true))
-        {
-            return $this->redirectToRoute('main_directory');
+        switch ($article) {
+            case "BTS":
+                return $this->render('articles/bts.html.twig', ['article' => $article]);
+            case "Korea":
+                return $this->render('articles/korea.html.twig', ['article' => $article]);
+            case "Hangul":
+                return $this->render('articles/hangul.html.twig', ['article' => $article]);
+            default:
+                return $this->redirectToRoute('main_directory');
         }
-
-        return $this->render('articles/bts.html.twig', [
-            'article' => $article,
-        ]);
-
     }
-
-    
-
 }
-

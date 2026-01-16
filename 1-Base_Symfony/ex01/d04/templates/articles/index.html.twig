@@ -2,12 +2,16 @@
 
 {% block title %}Liste des articles{% endblock %}
 
+{% block header %}
+
+<h1>Welcome on our articles website</h1>
+
+{% endblock %}
+
 {% block content %}
-   <div class="header">
-        <h1>Bienvenue sur notre site d'articles</h1>
-    </div>
-    <main>
-        <h2>Choisissez un article :</h2>
+
+    <div class="card">
+        <h2>Select an article :</h2>
         <ul>
             {% for category in categories %}
                 <li>
@@ -17,10 +21,8 @@
                 </li>
             {% endfor %}
         </ul>
-    </main>
-    <div class="footer">
-        <p>© 2026 Mon Application Symfony</p>
     </div>
+    
 {% endblock %}
 
 

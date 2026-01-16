@@ -12,6 +12,15 @@
         {% endblock %}
     </head>
     <body>
+
+        <header class="header">
+            {% block header %}{% endblock %}
+        </header>
+
         {% block content %}{% endblock %}
+        
+        <footer class="footer">
+            <p>© 2026 Symfony</p>
+        </footer>        
     </body>
 </html>
