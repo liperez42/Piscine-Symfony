@@ -19,7 +19,7 @@ final class ArticlesController extends AbstractController
     }
     
     #[Route('/e01/{article}', name: 'app_articles')]
-    public function index(string $article): Response
+    public function show(string $article): Response
     {
         $categories = $this->getParameter('app.categories');
 
@@ -28,7 +28,7 @@ final class ArticlesController extends AbstractController
             return $this->redirectToRoute('main_directory');
         }
 
-        return $this->render('articles/$article.html.twig', [
+        return $this->render('articles/bts.html.twig', [
             'article' => $article,
         ]);
 
