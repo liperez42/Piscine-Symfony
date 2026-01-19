@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Shades{% endblock %}</title>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            td {
+                height: 40px;
+                width: 80px;
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Shades of Colors</h1>
+        <table>
+            <thead>
+                <tr>
+                    {% for color in colors %}
+                        <th>{{ color|capitalize }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in 0..nb_shades-1 %}
+                    <tr>
+                        {% for color in colors %}
+                            <td style="background-color: {{ shades[color][i] }};"></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
