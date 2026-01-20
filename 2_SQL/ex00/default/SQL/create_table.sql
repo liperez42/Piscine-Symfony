@@ -1,0 +1,8 @@
+CREATE TABLE table(
+    id INT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    name VARCHAR(50), NOT NULL
+    email VARCHAR(255) UNIQUE NOT NULL,
+    enable BOOLEAN DEFAULT TRUE,
+    birthdate DATETIME,
+)
