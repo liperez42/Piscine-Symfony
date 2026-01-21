@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Table</title>
+		<style></style>
+	</head>
+	<body>
+		<h1>Create database table</h1>
+        <a href="{{ path('create_table') }}">
+            <button>Create</button>
+        </a>
+        {% if message %}
+            <div class="{{ message starts with 'Table' ? 'success' : 'error' }}">
+                {{ message }}
+            </div>
+        {% endif %}
+
+	</body>
+</html>
